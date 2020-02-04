@@ -19,14 +19,8 @@ export const FormLogin = styled(Container)`
 export const Formlabel = styled.label`
     margin:20px;
 `
-export const Button = styled.button`
-    width:70px;
-    border-radius: 4px;
-    border: 1px solid blue;
-    margin:10px 5px;
-`
 export const SocialLogin = styled.button`
-    width: 50%;
+    width: 45%;
     padding: 5px;
     border: none;
     border-radius: 2px;
@@ -40,7 +34,22 @@ export const SocialLogin = styled.button`
     color: white;
     text-align:center;
 `
+export const Button = styled.button`
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    margin: 3px ;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 10px;
+    line-height: 10px;
+    text-decoration: none;
+    background-color:#1E90FF ;
+    color: white;
+    text-align:center;
 
+`
   export const theme = {
     main: "mediumseagreen"
   };
