@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Login from '../component/Login'
+import Login from '../page/Login/LoginForm/Login'
 
 export const LoginContext = React.createContext()
 

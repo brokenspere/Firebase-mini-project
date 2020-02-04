@@ -1,19 +1,19 @@
-import React, { useState, useEffect,useContext } from 'react'
-import { FormLogin, Container, SocialLogin, Formlabel, Button } from '../style/Style'
+import React, { useState, useEffect, useContext } from 'react'
+import { FormLogin, Container, SocialLogin, Formlabel,Button } from '../../../style/Style'
 import { Form, Field } from 'react-final-form'
 import { Icon } from 'antd'
 import { ThemeProvider } from 'styled-components'
-import firebase from '../config/FirebaseConfig'
+import firebase from '../../../config/FirebaseConfig'
 import { useHistory } from "react-router-dom";
-import {LoginContext} from '../contexts/LoginContext'
+import { LoginContext } from '../../../contexts/LoginContext'
 const required = value => (value ? undefined : 'Required')
 
 export default function Login() {
-    const {user,setUser} = useContext(LoginContext)
+    const { user, setUser } = useContext(LoginContext)
     console.log(user)
     const history = useHistory();
-    const [imageUrl,setImageUrl] = useState('')
-    
+    const [imageUrl, setImageUrl] = useState('')
+
     const onSubmit = async (values) => {
         const { email, password } = values
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -26,42 +26,45 @@ export default function Login() {
                 alert(error)
             })
     }
-    const FacebookLogIn=()=>{
+    const Register =()=>{
+        history.push('/register')
+    }
+    const FacebookLogIn = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
-          .then(({user})=> {
-            setImageUrl(`${user.photoURL}?height=500`)
-            setUser({user})
-          })
-          .catch(function(error) {
-            alert(error)
-          });
+            .then(({ user }) => {
+                setImageUrl(`${user.photoURL}?height=500`)
+                setUser({ user })
+            })
+            .catch(function (error) {
+                alert(error)
+            });
     }
 
-    const GoogleLogIn=()=>{
+    const GoogleLogIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        .then(({user})=> {
-          setImageUrl(`${user.photoURL}?height=500`)
-          setUser({user})
-        })
-        .catch(function(error) {
-          alert(error)
-        });
+            .then(({ user }) => {
+                setImageUrl(`${user.photoURL}?height=500`)
+                setUser({ user })
+            })
+            .catch(function (error) {
+                alert(error)
+            });
     }
 
-    useEffect(()=>{
-        firebase.auth().onAuthStateChanged(user =>{
-            if (user){
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
                 setUser(user)
                 history.push('/home')
-            }else{
+            } else {
                 setUser(null)
             }
         })
         console.log(user);
-        
-    },[user])
+
+    }, [user])
     return (
         <Container>
             <FormLogin>
@@ -90,17 +93,17 @@ export default function Login() {
                                     </div>
                                 )}
                             </Field>
-                            <div style={{ marginLeft: '70px' }}>
+                            <div style={{marginLeft: '50px',display:'flex',flexDirection:'row'}}>
                                 <Button type="submit" disabled={submitting}>
                                     Submit
-                            </Button>
+                                </Button>
                                 <Button
                                     type="button"
                                     onClick={form.reset}
                                     disabled={submitting || pristine}
                                 >
                                     Reset
-                            </Button>
+                                </Button>
                             </div>
                         </form>
                     )}
@@ -111,6 +114,10 @@ export default function Login() {
                     </SocialLogin>
                     <SocialLogin theme={{ main: "#dd4b39" }} onClick={GoogleLogIn}>
                         <Icon type="google" /> <span>Login with Google</span>
+                    </SocialLogin>
+                    or
+                    <SocialLogin theme={{ main: "black" }} onClick={Register}>
+                         <span>Register</span>
                     </SocialLogin>
                 </ThemeProvider>
             </FormLogin>
