@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
+div,
+h1,
+h2,h3,h4,h5,h6,table,tr,td,th {
+  font-family:'Roboto', sans-serif;
+}
 .App {
   text-align: center;
 }
