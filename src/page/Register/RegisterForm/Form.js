@@ -16,6 +16,8 @@ export default function Register () {
                     Role:role
                 })
                 alert('Register complete')
+            }).then({
+                
             })
             .catch(error => {
                 console.log(error)
