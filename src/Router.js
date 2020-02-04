@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,18 +6,25 @@ import {
 } from "react-router-dom";
 import Home from './page/Home/Home'
 import Register from './page/Register/Register'
-import Login from './contexts/LoginContext'
+import Login from './page/Login/Login'
+
+export const UserContext = React.createContext()
 
 export default function Routers() {
+    const [currentUser, setCurrentUser] = useState(null)
     return (
-        <div>
-            <Router>
-                <Switch>
-                    <Route path="/" exact component={Login}/>
-                    <Route path="/home" exact component={Home}/>
-                    <Route path="/register" exact component={Register}/>
-                </Switch>
-            </Router>  
-        </div>
+            <UserContext.Provider value={{
+                user: currentUser,
+                setUser: setCurrentUser
+            }}>
+                <Router>
+                    <Switch>
+                        <Route path="/" exact component={Login} />
+                        <Route path="/home" exact component={Home} />
+                        <Route path="/register" exact component={Register} />
+                    </Switch>
+                </Router>
+            </UserContext.Provider>
+
     )
 }

@@ -5,11 +5,11 @@ import { Icon } from 'antd'
 import { ThemeProvider } from 'styled-components'
 import firebase from '../../../config/FirebaseConfig'
 import { useHistory } from "react-router-dom";
-import { LoginContext } from '../../../contexts/LoginContext'
+import { UserContext } from '../../../Router'
 const required = value => (value ? undefined : 'Required')
 
 export default function Login() {
-    const { user, setUser } = useContext(LoginContext)
+    const { user, setUser } = useContext(UserContext)
     console.log(user)
     const history = useHistory();
     const [imageUrl, setImageUrl] = useState('')

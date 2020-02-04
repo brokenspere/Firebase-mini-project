@@ -16,6 +16,8 @@ export default function Register () {
                     Role:role
                 })
                 alert('Register complete')
+            }).then({
+                
             })
             .catch(error => {
                 console.log(error)
@@ -23,6 +25,7 @@ export default function Register () {
             })
     }
     const required = value => (value ? undefined : 'Required')
+    const minlength = min=> value =>(value >min ? undefined: 'Must be longer than 8 character')
 
     return (
         <Container>
@@ -43,7 +46,7 @@ export default function Register () {
                                     </div>
                                 )}
                             </Field>
-                            <Field name="password" validate={required}>
+                            <Field name="password" validate={required,minlength(8)}>
                                 {({ input, meta }) => (
                                     <div style={{ margin: '10px' }}>
                                         <Formlabel>Password</Formlabel>
