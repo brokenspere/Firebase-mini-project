@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { FormLogin, Container, SocialLogin, Formlabel,Button } from '../../../style/Style'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { Icon } from 'antd'
 import { ThemeProvider } from 'styled-components'
 import firebase from '../../../config/FirebaseConfig'
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../../../Router'
-const required = value => (value ? undefined : 'Required')
+import Fields from '../../../components/Form/Form'
 
 export default function Login() {
     const { user, setUser } = useContext(UserContext)
@@ -35,6 +35,7 @@ export default function Login() {
             .then(({ user }) => {
                 setImageUrl(`${user.photoURL}?height=500`)
                 setUser({ user })
+                history.push('/home')
             })
             .catch(function (error) {
                 alert(error)
@@ -47,6 +48,7 @@ export default function Login() {
             .then(({ user }) => {
                 setImageUrl(`${user.photoURL}?height=500`)
                 setUser({ user })
+                history.push('/home')
             })
             .catch(function (error) {
                 alert(error)
@@ -69,31 +71,15 @@ export default function Login() {
         <Container>
             <FormLogin>
                 <div>
-                    <h3>Login</h3>
+                    <h3 style={{fontWeight:'bold'}}>Welcome</h3>
                 </div>
                 <Form
                     onSubmit={onSubmit}
                     render={({ handleSubmit, form, submitting, pristine, values }) => (
                         <form onSubmit={handleSubmit}>
-                            <Field name="email" validate={required}>
-                                {({ input, meta }) => (
-                                    <div style={{ margin: '10px' }}>
-                                        <Formlabel>Email</Formlabel>
-                                        <input {...input} type="email" placeholder="Email" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
-                                    </div>
-                                )}
-                            </Field>
-                            <Field name="password" validate={required}>
-                                {({ input, meta }) => (
-                                    <div style={{ margin: '10px' }}>
-                                        <Formlabel>Password</Formlabel>
-                                        <input {...input} type="password" placeholder="Password" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
-                                    </div>
-                                )}
-                            </Field>
-                            <div style={{marginLeft: '50px',display:'flex',flexDirection:'row'}}>
+                           <Fields name={"email"} type={"email"} placeholder={"Email"}/>
+                           <Fields name={"password"} type={"password"} placeholder={"Password"}/>
+                            <div style={{marginLeft: '30px',display:'flex',flexDirection:'row'}}>
                                 <Button type="submit" disabled={submitting}>
                                     Submit
                                 </Button>

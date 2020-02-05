@@ -1,19 +1,15 @@
-import React from 'react'
-import firebase from '../../config/FirebaseConfig'
-import {Button} from 'antd'
+import React,{useContext,useEffect} from 'react'
 import { useHistory } from "react-router-dom";
+import {UserContext} from '../../Router'
+import Sidebar from '../../components/Sidebar/Sidebar'
 export default function Home() {
-    const history = useHistory();
-    const Logout =()=>{
-        firebase.auth().signOut().then(function() {
-            history.push('/')
-          }).catch(function(error) {
-            alert(error)
-          });
-    }
+    const { user } = useContext(UserContext)
+    useEffect(()=>{
+        console.log(user)
+    },[user])
     return (
         <div>
-            <Button onClick={Logout}>Logout</Button>
+            <Sidebar/>
         </div>
     )
 }
