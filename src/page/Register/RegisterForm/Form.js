@@ -18,6 +18,7 @@ export default function Register() {
                 firebase.firestore().collection('Users').doc(response.user.uid).set({
                     FirstName: firstname,
                     LastName: lastname,
+                    Email:email,
                     Role: role
                 })
                 alert('Register complete')
