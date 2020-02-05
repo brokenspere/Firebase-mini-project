@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    background-color:white;
+    background-color:#E5E5E5;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -14,7 +14,7 @@ export const FormLogin = styled(Container)`
     border: 1px solid lightgrey;
     border-radius: 4px;
     position:absolute;
-    bottom: 35%;    
+    bottom: 35%;
 `
 export const Formlabel = styled.label`
     margin:20px;
