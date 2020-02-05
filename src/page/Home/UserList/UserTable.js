@@ -1,9 +1,36 @@
 import React,{useEffect,useState} from 'react'
-import { Table, Divider, Tag } from 'antd';
+import { Table, Divider } from 'antd';
 import firebase from '../../../config/FirebaseConfig'
 export default function UserTable() {
     const [userList,setUserList] = useState([])
-
+    const columns =[
+        {
+            title:'First name',
+            dataIndex:'FirstName',
+            key:'FirstName'
+        },
+        {
+            title:'Last name',
+            dataIndex:'LastName',
+            key:'LastName'
+        },
+        {
+            title:'Email',
+            dataIndex:'Email',
+            key:'Email'
+        },
+        {
+            title: '',
+            key: 'action',
+            render: () => (
+              <span>
+                <a>Edit</a>
+                <Divider type="vertical" />
+                <a>Delete</a>
+              </span>
+            ),
+          }
+    ]
     useEffect(()=>{
         const fetchData =async()=>{
             const db = firebase.firestore()
@@ -19,7 +46,7 @@ export default function UserTable() {
     
     return (
         <div>
-            
+            <Table dataSource={userList} columns={columns} />
         </div>
     )
 }
