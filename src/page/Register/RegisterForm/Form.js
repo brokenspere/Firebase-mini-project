@@ -1,10 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { FormLogin, Container, SocialLogin, Formlabel, Button } from '../../../style/Style'
 import { Form, Field } from 'react-final-form'
 import firebase from '../../../config/FirebaseConfig'
-import { ThemeProvider } from 'styled-components'
+import {UserContext} from '../../../Router'
+import {useHistory} from 'react-router-dom'
+
+
 
 export default function Register () {
+    const history = useHistory()
+    const { setUser } = useContext(UserContext)
     const [role] = useState('User')
     const onSubmit = async (values) => {
         const { email, password,firstname,lastname } = values
@@ -16,8 +21,8 @@ export default function Register () {
                     Role:role
                 })
                 alert('Register complete')
-            }).then({
-                
+                setUser(response.user)
+                history.push('/home')
             })
             .catch(error => {
                 console.log(error)
@@ -25,8 +30,7 @@ export default function Register () {
             })
     }
     const required = value => (value ? undefined : 'Required')
-    const minlength = min=> value =>(value >min ? undefined: 'Must be longer than 8 character')
-
+    //const minlength = min=> value =>(value >= min ? 'Must be longer than 8 character' : undefined)
     return (
         <Container>
             <FormLogin>
@@ -46,7 +50,7 @@ export default function Register () {
                                     </div>
                                 )}
                             </Field>
-                            <Field name="password" validate={required,minlength(8)}>
+                            <Field name="password" validate={required}>
                                 {({ input, meta }) => (
                                     <div style={{ margin: '10px' }}>
                                         <Formlabel>Password</Formlabel>

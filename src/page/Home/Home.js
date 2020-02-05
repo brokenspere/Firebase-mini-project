@@ -1,8 +1,10 @@
 import React from 'react'
 import firebase from '../../config/FirebaseConfig'
-import {Button} from 'antd'
+import {Button} from '../../style/Style'
 import { useHistory } from "react-router-dom";
+import Sidebar from '../../components/Sidebar/Sidebar'
 export default function Home() {
+ 
     const history = useHistory();
     const Logout =()=>{
         firebase.auth().signOut().then(function() {
@@ -13,7 +15,8 @@ export default function Home() {
     }
     return (
         <div>
-            <Button onClick={Logout}>Logout</Button>
+            <Sidebar/>
+            {/* <Button onClick={Logout}>Logout</Button> */}
         </div>
     )
 }
