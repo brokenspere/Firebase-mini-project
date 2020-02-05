@@ -3,6 +3,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import "antd/dist/antd.css";
 import firebase from '../../config/FirebaseConfig'
 import { useHistory } from 'react-router-dom'
+import Usertable from '../../page/Home/UserList/UserTable'
 const { Header, Content, Footer, Sider } = Layout;
 
 export default function Sidebar() {
@@ -44,7 +45,7 @@ export default function Sidebar() {
                         <Breadcrumb.Item>User</Breadcrumb.Item>
                         <Breadcrumb.Item>Bill</Breadcrumb.Item>
                     </Breadcrumb>
-                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
+                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}><Usertable/></div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>
