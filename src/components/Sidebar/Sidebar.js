@@ -45,7 +45,9 @@ export default function Sidebar() {
                         <Breadcrumb.Item>User</Breadcrumb.Item>
                         <Breadcrumb.Item>Bill</Breadcrumb.Item>
                     </Breadcrumb>
-                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}><Usertable/></div>
+                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                        <Usertable/>
+                    </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
             </Layout>

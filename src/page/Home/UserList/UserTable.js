@@ -46,7 +46,7 @@ export default function UserTable() {
     
     return (
         <div>
-            <Table dataSource={userList} columns={columns} />
+            <Table  rowKey="FirstName" dataSource={userList} columns={columns} />
         </div>
     )
 }
