@@ -1,14 +1,26 @@
-import React from 'react'
+import React,{useEffect,useContext} from 'react'
 import { Layout, Menu,Icon } from 'antd';
 import "antd/dist/antd.css";
 import firebase from '../../config/FirebaseConfig'
 import { useHistory, Link } from 'react-router-dom'
 import Profile from '../../page/Home/assets/Trump.jpg'
 import {HeaderContainer,ButtonHeader,ImageLogo,ProfileImg,FirebaseText} from '../../style/Style'
-const { Header, Content, Footer, Sider } = Layout;
+import {UserContext} from '../../Router'
+const {  Content,Sider } = Layout;
 
 export default function Sidebar({ children }) {
+    const { user, setUser } = useContext(UserContext)
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                setUser(user)
+            } else {
+                setUser(null)
+            }
+        })
+        console.log(user);
 
+    }, [user])
 
     const history = useHistory()
     const Logo = 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png'
@@ -42,7 +54,6 @@ export default function Sidebar({ children }) {
                     }}>
                     <Menu
                         mode="inline"
-                        defaultSelectedKeys={['1']}
                         style={{ height: '100%', borderRight: 0 }}
                     >
                         <Menu.Item key="1">
