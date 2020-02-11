@@ -17,6 +17,7 @@ export const FirebaseText =styled.img`
     width: 82px;
     height: 50px;
     position:absolute;
+    margin-right:5px;
     right:90%
 `
 export const ProfileImg = styled(ImageLogo)`
