@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { Table, Divider } from 'antd';
+import { Table, Divider,Spin } from 'antd';
 import firebase from '../../../config/FirebaseConfig'
 export default function UserTable() {
     const [userList,setUserList] = useState([])
@@ -45,8 +45,13 @@ export default function UserTable() {
     },[userList])
     
     return (
+        userList.length > 0 ? (
         <div>
             <Table  rowKey="FirstName" dataSource={userList} columns={columns} />
         </div>
+        ) : (
+            <Spin style={{display:'flex',justifyContent:'center'}} tip="Loading..." />
+          )
+  
     )
 }
