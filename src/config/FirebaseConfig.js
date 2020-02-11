@@ -3,14 +3,14 @@ import 'firebase/firebase-firestore'
 import 'firebase/firebase-auth'
 
  const firebaseConfig = {
-    apiKey: "AIzaSyCrz0DTqidyt0n2y4FAf-PP0bUOwln44VA",
-    authDomain: "mini-project-fdcdc.firebaseapp.com",
-    databaseURL: "https://mini-project-fdcdc.firebaseio.com",
-    projectId: "mini-project-fdcdc",
-    storageBucket: "mini-project-fdcdc.appspot.com",
-    messagingSenderId: "450642938086",
-    appId: "1:450642938086:web:486d194e2d401edbbad327",
-    measurementId: "G-E6R042SPHT"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+    messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
