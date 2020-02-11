@@ -8,6 +8,20 @@ export const Container = styled.div`
     align-items: center;
    
 `
+export const ImageLogo =styled.img`
+    width: 50px;
+    height: 50px;
+    margin-left:10px;
+`
+export const FirebaseText =styled.img`
+    width: 82px;
+    height: 50px;
+    position:absolute;
+    right:90%
+`
+export const ProfileImg = styled(ImageLogo)`
+    border-radius:50px;
+`
 export const FormLogin = styled(Container)`
     width:550px;
     height: 300px;
@@ -50,7 +64,24 @@ export const Button = styled.button`
     text-align:center;
 
 `
-  export const theme = {
+export const HeaderContainer = styled.div`
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin:auto
+    width:1200px;
+    background-color: #001529;
+    font-weight:700;
+    postion:relative;
+`
+export const ButtonHeader = styled.div`
+    border-left: 1px solid rgb(70,70,70);
+    border-right: 1px solid rgb(70,70,70);
+    line-height:50px;
+    color: white;
+    font-size:12px;
+    margin-right:10px
+`
+export const theme = {
     main: "mediumseagreen"
-  };
-  
+};

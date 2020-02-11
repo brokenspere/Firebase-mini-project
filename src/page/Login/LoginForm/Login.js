@@ -10,7 +10,6 @@ import Fields from '../../../components/Form/Form'
 
 export default function Login() {
     const { user, setUser } = useContext(UserContext)
-    console.log(user)
     const history = useHistory();
     const [imageUrl, setImageUrl] = useState('')
 
@@ -18,7 +17,7 @@ export default function Login() {
         const { email, password } = values
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(response => {
-                console.log(response)
+                //console.log(response)
                 setUser(response.user)
                 history.push('/home')
             })

@@ -1,19 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import { useHistory,useLocation } from "react-router-dom";
-import { UserContext } from '../../Router'
+import React from 'react'
+import UserTable from '../Home/UserList/UserTable'
 import Sidebar from '../../components/Sidebar/Sidebar'
-export default function Home() {
-    const { user } = useContext(UserContext)
-    const location = useLocation();
-    React.useEffect(() => {
-        // ga.send(["pageview", location.pathname]);
-        console.log(location.pathname)
-    }, [location]);
-   
 
+
+export default function Home() {
     return (
-        <div>
-            <Sidebar />
-        </div>
+        <Sidebar>
+            <UserTable/>
+        </Sidebar>
     )
 }

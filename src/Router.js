@@ -7,6 +7,7 @@ import {
 import Home from './page/Home/Home'
 import Register from './page/Register/Register'
 import Login from './page/Login/Login'
+import Profile from './page/Home/Profile/Profile'
 
 export const UserContext = React.createContext()
 
@@ -22,6 +23,7 @@ export default function Routers() {
                         <Route path="/" exact component={Login} />
                         <Route path="/home" exact component={Home} />
                         <Route path="/register" exact component={Register} />
+                        <Route path="/profile" exact component={Profile} />
                     </Switch>
                 </Router>
             </UserContext.Provider>
